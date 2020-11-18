@@ -28,6 +28,6 @@ currently the project is limited to :
 
 since the project is in development mode, it may be contains some errors.
 
-suggestions are welcome at ajjain1280@gmail.com.
+Suggestions are welcome at ajjain1280@gmail.com.
 
-thanks for showing intrest in this project.
+Thanks for showing intrest in this project.
