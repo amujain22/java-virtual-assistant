@@ -10,7 +10,7 @@ Project Author - Aman Jain
 
 
 
-This project is a simple virtual assistant which is made in java and will run on terminal.
+This project is a open source simple virtual assistant which is made in java and will run on terminal.
 currently the project is limited to :
 
 
