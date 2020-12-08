@@ -22,7 +22,7 @@ currently the project is limited to :
 - Play games 
 - Shutdown System
 - Restart System 
-- Check password strenght 
+- Check password strength
 - Show system info
 - Exit
 
