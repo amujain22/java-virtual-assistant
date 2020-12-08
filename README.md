@@ -13,7 +13,7 @@ Project Author - Aman Jain
 This project is a open source simple virtual assistant which is made in java and will run on terminal.
 currently the project is limited to :
 
-
+- Show current Date/Time
 - Open Calculator
 - Open Notepad 
 - Open MS Paint
@@ -23,6 +23,7 @@ currently the project is limited to :
 - Shutdown System
 - Restart System 
 - Check password strenght 
+- Show system info
 - Exit
 
 
