@@ -1,11 +1,11 @@
 # java-virtual-assistant
 
 
-## Project Name - Java Virtual Assistant
+### Project Name - Java Virtual Assistant
 
-## Project Version - 1.0
+### Project Version - 1.0
 
-## Project Author - Aman Jain
+### Project Author - Aman Jain
 
 
 
