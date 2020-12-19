@@ -4,6 +4,7 @@ import java.time.format.FormatStyle;
 import java.util.Scanner;
 import java.net.InetAddress;
 import java.util.Random;
+import java.io.*;
 
 public class assistant {
     static class DateTime {
@@ -11,28 +12,13 @@ public class assistant {
             LocalDateTime current = LocalDateTime.now();
 
             DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
-            String formatted = current.format(formatter);
+            String datetime = current.format(formatter);
 
-            System.out.println("Current Date and Time is: " + formatted);
+            System.out.println("Current Date and Time is: " + datetime);
         }
     }
 
-    static class Help {
-        void help() {
-            System.out.println(" ********** I can do the following things  ********** \n" +
-                    "- Open Calculator ( type open calculator) \n" +
-                    "- Open Notepad (type open notepad) \n" +
-                    "- Open MS Paint (type open paint) \n" +
-                    "- Open File Explorer (type open file explorer) \n " +
-                    "- Open Google Chrome (type open chrome ) \n" +
-                    "- Play games ( type play game) \n" +
-                    "- Shutdown System (type shutdown )\n" +
-                    "- Restart System (type restart ) \n" +
-                    "- Exit ( Type Exit to terminate )\n" +
-                    "- Check password strenght (type password strength) \n");
 
-        }
-    }
 
     static class GetSystemInfo {
         void sysinfo() {
@@ -41,7 +27,7 @@ public class assistant {
                 InetAddress inetAddress = InetAddress.getLocalHost();
 
                 String ipAddress = inetAddress.getHostAddress();
-                System.out.println("IP address: " + ipAddress);
+                System.out.println("Your IP address is : " + ipAddress);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -56,7 +42,7 @@ public class assistant {
             String computerPlay = ""; //Computer's play -- "R", "P", or "S"
             int computerInt; //Randomly generated number used to determine
             //computer's play
-            String response;
+            
 
             Scanner scan = new Scanner(System.in);
             Random generator = new Random();
@@ -216,6 +202,129 @@ public class assistant {
 
         }
     }
+    static class diary{
+        void inp()
+        {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter file name with .txt extension");
+            String fname = sc.nextLine();
+            try
+            {
+                FileOutputStream fout=new FileOutputStream(fname);
+                System.out.println("write here (please write in single line only)........... \n");
+                String s= sc.nextLine();
+                byte b[]=s.getBytes();//converting string into byte array
+                fout.write(b);
+                fout.close();
+                System.out.println("successfully written...........\n");
+            }
+            catch(Exception e){System.out.println(e);}
+        }
+        void out()
+        {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter file name to open with .txt extension");
+            String fname = sc.nextLine();
+            try
+            {
+                FileInputStream fin=new FileInputStream(fname);
+                int i=0;
+                while((i=fin.read())!=-1){
+                    System.out.print((char)i);
+                }
+                System.out.println("\n");
+                fin.close();
+            }
+            catch(Exception e){System.out.println("File not found. please try again with correct file name. \n");
+            }
+
+        }
+    }
+    static class Help {
+        void help() {
+            System.out.println(" ********** I can do the following things  ********** \n" +
+                    "- Open Calculator ( type open calculator) \n" +
+                    "- Open Notepad (type open notepad) \n" +
+                    "- Open MS Paint (type open paint) \n" +
+                    "- Open File Explorer (type open file explorer) \n " +
+                    "- Open Google Chrome (type open chrome ) \n" +
+                    "- Play games ( type play game) \n" +
+                    "- Shutdown System (type shutdown )\n" +
+                    "- Restart System (type restart ) \n" +
+                    "- Check password strength (type password strength) \n" +
+                    "- Create a memo/diary file(type diary)\n" +
+                    "- Show system info (type systeminfo)\n" +
+                    "- Exit ( Type Exit to terminate )\n");
+
+        }
+    }
+    static class calculator
+    {
+        void calc()
+        {
+            float a,b,res;
+            int choice;
+            Scanner S=new Scanner(System.in);
+
+            do
+            {
+
+                System.out.println("\n\nCalculator : \n" +
+                        "Press 1 for Addition\n" +
+                        "Press 2 for Subtraction\n" +
+                        "Press 3 for Division\n" +
+                        "Press 4 for Multiplication\n" +
+                        "Press 5 to exit to main menu\n");
+
+                // enter the choice
+                System.out.print("Enter your choice : ");
+
+                // read the input choice value.
+                choice=S.nextInt();
+
+                switch(choice)
+                {
+                    case 1:System.out.print("Enter two numbers : ");
+                        a=S.nextFloat();
+                        b=S.nextFloat();
+                        res=a+b;
+                        System.out.print("Result : " +res);
+                        break;
+
+                    case 2:System.out.print("Enter two numbers : ");
+                        a=S.nextFloat();
+                        b=S.nextFloat();
+                        res=a-b;
+                        System.out.print("Result : " +res);
+                        break;
+
+                    case 3:System.out.print("Enter two numbers : ");
+                        a=S.nextFloat();
+                        b=S.nextFloat();
+                        res=a/b;
+                        System.out.print("Result : " +res);
+                        break;
+
+                    case 4:System.out.print("Enter two numbers : ");
+                        a=S.nextFloat();
+                        b=S.nextFloat();
+                        res=a*b;
+                        System.out.print("Result : " +res);
+                        break;
+
+                    case 5:
+                        System.out.println("You are being redirected to main menu\n" +
+                                "You are in main menu now\n");
+                        main(null);
+                        break;
+                    default : System.out.print("Wrong Choice.....\n");
+                        break;
+                }
+            }
+            // loop works till the number 5 not selected.
+            while(choice!=5);
+        }
+    }
 
     public static void main(String[] args) {
         DateTime dt = new DateTime();
@@ -225,22 +334,29 @@ public class assistant {
         GetSystemInfo sinfo = new GetSystemInfo();
         Game gm = new Game();
         pass p = new pass();
+        diary d = new diary();
+        calculator cal = new calculator();
 
         while (true) {
             System.out.println("Any order for me ? ");
             Scanner input = new Scanner(System.in);
-            // String calc = "calculator";
+
             String command = input.nextLine();
             try {
 
                 if (command.toLowerCase().contains("calculator")) {
-                    app.exec("calc"); // open calculator app
+//                    app.exec("calc"); // open calculator app
+                    cal.calc();//runs calculator function
                 } else if (command.toLowerCase().contains("help"))
                     hp.help(); // help menu
                 else if (command.toLowerCase().contains("password"))
                     p.passcheck(); // check password strenght
-                else if (command.toLowerCase().contains("notepad"))
+                else if (command.toLowerCase().contains("ip address"))
+                    sinfo.sysinfo(); // show system ip address
+                else if (command.toLowerCase().contains("notepad") || command.toLowerCase().contains("file"))
                     app.exec("notepad"); // opens notepad app
+                else if (command.toLowerCase().contains("calender"))
+                    app.exec("calender"); // opens calender app
                 else if (command.toLowerCase().contains("explorer"))
                     app.exec("explorer"); // opens file explorer
                 else if (command.toLowerCase().contains("paint"))
@@ -270,7 +386,37 @@ public class assistant {
                     System.out.println("Exiting, Thanks for using me.");
                     System.exit(0); // exit function
                 } else if (command.toLowerCase().contains("systeminfo"))
+                {
                     sinfo.sysinfo(); // shows system info
+                    System.out.println("Available Processors : "+app.availableProcessors());
+                    System.out.printf(" Total Memory : "+app.totalMemory()/(1024.0*1024.0) +" MB\n");
+                    System.out.printf(" Free memory : "+app.freeMemory()/(1024.0*1024.0) +" MB\n");
+                }
+                else if (command.toLowerCase().contains("diary"))
+                {
+                    while (true) {
+                        System.out.println("\nPress 1 to write in a file\n" +
+                                "Press 2 to read from a file\n" +
+                                "Press 3 to exit to main menu");
+
+                        int inp = input.nextInt();
+
+                        switch (inp) {
+                            case 1:
+                                d.inp();
+                                break;
+                            case 2:
+                                d.out();
+                                break;
+                            case 3 :
+                                System.out.println("You are in main menu now\n");
+                                main(null);
+                            default:
+                                System.out.println("enter correct choice");
+                        }
+
+                    }
+                }
                 else if (command.toLowerCase().contains("game")) {
                     System.out.println("Which game you want to play : \n" +
                             " Press 1 for Rock paper Scissor \n" +
