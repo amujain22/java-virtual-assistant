@@ -16,6 +16,7 @@ currently the project is limited to :
 - Show current Date/Time
 - Open Calculator
 - Open Notepad 
+- Create a memo/diary and save in a file
 - Open MS Paint
 - Open File Explorer 
 - Open Google Chrome Browser
